@@ -1,0 +1,54 @@
+{
+	"businessData": [
+		{
+			"Sales_Month": "April",
+			"Marital Status": "Married",
+			"Customer Gender": "Female",
+			"Sales_Quarter": "Q1",
+			"Cost": 190,
+			"Unit Price": 128.3,
+			"Gross Profit": 321,
+			"Sales Revenue": 120
+		},
+		{
+			"Sales_Month": "May",
+			"Marital Status": "Married",
+			"Customer Gender": "Female",
+			"Sales_Quarter": "Q2",
+			"Cost": 189.9,
+			"Unit Price": 151.17,
+			"Gross Profit": 181.59,
+			"Sales Revenue": 471.49
+		},
+		{
+			"Sales_Month": "June",
+			"Marital Status": "Married",
+			"Customer Gender": "Female",
+			"Sales_Quarter": "Q3",
+			"Cost": 135,
+			"Unit Price": 321,
+			"Gross Profit": 124,
+			"Sales Revenue": 349
+		},
+		{
+			"Sales_Month": "July",
+			"Marital Status": "Married",
+			"Customer Gender": "Female",
+			"Sales_Quarter": "Q4",
+			"Cost": 169.4,
+			"Unit Price": 185.2,
+			"Gross Profit": 153.8,
+			"Sales Revenue": 145.9
+		},
+		{
+			"Sales_Month": "Augst",
+			"Marital Status": "Married",
+			"Customer Gender": "Male",
+			"Sales_Quarter": "Q1",
+			"Cost": 270.2,
+			"Unit Price": 175,
+			"Gross Profit": 154.3,
+			"Sales Revenue": 164.9
+		}
+	]
+}

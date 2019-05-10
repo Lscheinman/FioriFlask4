@@ -15,19 +15,6 @@ MAIL_USE_SSL = False
 MAIL_USERNAME = 'you@gmail.com'
 MAIL_PASSWORD = 'awesomepassword'
 
-# Celery.
-CELERY_BROKER_URL = 'redis://:devpassword@redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://:devpassword@redis:6379/0'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_REDIS_MAX_CONNECTIONS = 5
-
-# SQLAlchemy.
-db_uri = 'postgresql://fioriapp:devpassword@postgres:5432/fioriapp'
-SQLALCHEMY_DATABASE_URI = db_uri
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-
 # User.
 SEED_ADMIN_EMAIL = 'dev@local.host'
 SEED_ADMIN_PASSWORD = 'devpassword'
