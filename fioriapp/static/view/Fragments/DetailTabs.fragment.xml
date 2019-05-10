@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <IconTabBar
+            headerMode="Inline"
+            upperCase="false"
+            class="sapUiResponsiveContentPadding">
+        <items>
+            <IconTabFilter
+                icon="sap-icon://puzzle"
+                text="Analysis"
+                key="db_actions">
+                <content>
+                    <core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.NetworkGraph" type="XML" />
+                </content>
+            </IconTabFilter>
+            <IconTabFilter
+                icon="sap-icon://multiple-radar-chart"
+                text="Charts"
+                key="db_actions">
+                <content>
+                    <core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.DetailChart" type="XML" />
+                </content>
+            </IconTabFilter>
+            <IconTabFilter
+                icon="sap-icon://table-chart"
+                text="Sample"
+                key="db_update">
+                <content>
+                    <core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.Sample" type="XML" />
+                </content>
+            </IconTabFilter>
+            <IconTabFilter
+                icon="sap-icon://database"
+                text="Files"
+                key="db_actions">
+                <content>
+                    <core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.FileManager" type="XML" />
+                </content>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</core:FragmentDefinition>

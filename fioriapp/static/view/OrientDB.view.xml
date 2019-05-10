@@ -1,0 +1,15 @@
+<core:View
+        id="Main" controllerName="sap.ui.demo.basicTemplate.controller.OrientDB"
+        displayBlock="true"
+        xmlns="sap.f"
+        xmlns:core="sap.ui.core"
+        xmlns:m="sap.m">
+    <m:Page class="secondPage" title="{i18n>title}">
+        <m:customHeader class="NavToolbar">
+            <core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.Header" type="XML"/>
+        </m:customHeader>
+            <m:content>
+                <core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.Details" type="XML"/>
+            </m:content>
+        </m:Page>
+</core:View>

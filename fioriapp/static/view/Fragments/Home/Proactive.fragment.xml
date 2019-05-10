@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:s="sap.suite.ui.commons"
+	xmlns:card="sap.f.cards">
+	<FlexBox>
+		<items>
+			<HBox class="sapUiSmallMargin">
+				<f:Card
+					id="Card4"
+					height="400px"
+					width="400px"
+				>
+					<f:header>
+						<card:Header
+							title="My Timeline"
+							subtitle="Processes and requests"
+							iconSrc="sap-icon://line-chart-time-axis"/>
+					</f:header>
+					<f:content>
+							<s:Timeline
+							id="idTimeline"
+							growingThreshold="0"
+							content="{path: '/activityItems'}"
+							showIcons="false"
+							enableSocial="true"
+							>
+							<s:content>
+								<s:TimelineItem
+									id="idTemplateItem"
+									dateTime="{Date}"
+									text="{Text}"
+									title="{Title}"
+									userName="{UserName}">
+								</s:TimelineItem>
+							</s:content>
+						</s:Timeline>
+					</f:content>
+				</f:Card>
+			</HBox>
+			<HBox class="sapUiSmallMargin">
+				<GenericTile
+						class="tileLayout"
+						header="Data Exploration"
+						subheader="OrientDB"
+						press="press('OrientDB')">
+					<TileContent>
+						<ImageContent src="sap-icon://overview-chart" />
+					</TileContent>
+				</GenericTile>
+			</HBox>
+		</items>
+	</FlexBox>
+</core:FragmentDefinition>

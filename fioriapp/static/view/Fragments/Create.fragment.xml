@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:layout="sap.ui.layout"
+        xmlns:form="sap.ui.layout.form">
+    <HBox alignItems="Start" justifyContent="SpaceBetween">
+    <!--<layout:HorizontalLayout allowWrapping="true" >-->
+        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+            <form:Form id="CRUD.create">
+                <form:title>
+                    <core:Title text="Create"/>
+                </form:title>
+                <form:layout>
+                    <form:ResponsiveGridLayout />
+                </form:layout>
+                <form:formContainers>
+                    <form:FormContainer title="Classes">
+                        <form:formElements>
+                            <form:FormElement>
+                                <form:fields>
+                                    <Select id="CRUD.create.classes"
+                                        forceSelection="false"
+                                        class="sapUiResponsiveMargin"
+                                        change="onCRUDCreateSelectChange"
+                                        items="{/}">
+                                        <core:Item key="{class}" text="{class}" />
+                                    </Select>
+                                </form:fields>
+                            </form:FormElement>
+                        </form:formElements>
+                    </form:FormContainer>
+                <form:FormContainer title="Properties"
+                                    id="CRUD.create.classes.properties">
+				</form:FormContainer>
+                    <form:FormContainer>
+                        <form:formElements>
+                            <form:FormElement>
+                                <Button text="Create" press="onCRUDCreatePress" type="Accept" />
+                            </form:FormElement>
+                        </form:formElements>
+				    </form:FormContainer>
+			    </form:formContainers>
+            </form:Form>
+        </layout:VerticalLayout>
+    </HBox>
+</core:FragmentDefinition>

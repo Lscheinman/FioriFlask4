@@ -1,0 +1,47 @@
+<core:View controllerName="sap.ui.demo.basicTemplate.controller.App"
+		   xmlns:core="sap.ui.core"
+		   xmlns="sap.uxap"
+		   xmlns:m="sap.m"
+		   height="100%">
+	<m:Page class="firstPage" title="Launchpad">
+    	<m:customHeader class="NavToolbar">
+    	    <m:Bar class="audienceSensorHeader">
+    			<m:contentLeft>
+    			</m:contentLeft>
+    			<m:contentMiddle>
+    				<m:Text id="titleText" class="titleTextHeader" text="Launchpad"/>
+    			</m:contentMiddle>
+    			<m:contentRight>
+    			</m:contentRight>
+    		</m:Bar>
+	    </m:customHeader>
+		<m:content>
+			<!-- TODO ADD COMPONENTS AS IF FOR FUTURE USE -->
+		    <m:HBox class="mainPage" renderType="Bare">
+				<ObjectPageLayout id="ObjectPageLayout">
+					<sections>
+                        <ObjectPageSection id="section0" title="Section 0">
+							<subSections>
+								<ObjectPageSubSection id="OpsSection0" title="Reactive">
+									<!--<blocks>-->
+										<core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.Home.Reactive" type="XML"/>
+									<!--</blocks>-->
+
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+						<ObjectPageSection id="section1" title="Section 1">
+							<subSections>
+								<ObjectPageSubSection id="OpsSection1" title="Proactive">
+									<!--<blocks>-->
+										<core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.Home.Proactive" type="XML"/>
+									<!--</blocks>-->
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>
+			</m:HBox>
+		</m:content>
+	</m:Page>
+</core:View>

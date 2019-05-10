@@ -1,0 +1,237 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+		xmlns:form="sap.ui.layout.form"
+        xmlns:dnd="sap.ui.core.dnd"
+        xmlns:u="sap.ui.unified">
+
+                <form:SimpleForm id="FileManager.get_response"
+                                 layout="ResponsiveGridLayout">
+                    <form:content>
+                        <Table id="idUploadFiles"
+                        inset="false"
+                        items="{
+                            path: '/files',
+                            sorter: {
+                                path: 'filename'
+                            }
+                        }">
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title text="Upload new file"/>
+                                    <ToolbarSpacer></ToolbarSpacer>
+                                     <u:FileUploader
+                                        id="fileUploader"
+                                        name="file"
+                                        uploadUrl="OrientDB/upload"
+                                        tooltip="Upload your file to the local server"
+                                        uploadComplete="handleUploadComplete"
+                                        change="handleValueChange"
+                                        typeMissmatch="handleTypeMissmatch"
+                                        fileType="txt,csv,xlsx,xls"
+                                        style="Transparent"
+                                        placeholder="Choose a file for Upload...">
+                                    </u:FileUploader>
+                                    <Button	icon="sap-icon://upload" press="handleUploadPress" />
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column
+                                    id="upfileNameCol"
+                                    width="12em"
+                                    hAlign="Center">
+                                    <Text text="File name" />
+                                </Column>
+                                <Column
+                                    id="upfileTypeCol"
+                                    minScreenWidth="Tablet"
+                                    hAlign="Center">
+                                    <Text text="Type" />
+                                </Column>
+                                <Column
+                                    id="upfileDateCol"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center">
+                                    <Text text="Created" />
+                                </Column>
+                                <Column
+                                    id="upfileSizeCol"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center">
+                                    <Text text="Size" />
+                                </Column>
+                                <Column
+                                    id="upfileStartCol"
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    hAlign="Center">
+                                    <Text text="Process" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text
+                                            text="{filename}" />
+                                        <Text
+                                            text="{file_type}" />
+                                        <Text
+                                            text="{create_date}" />
+                                        <Text
+                                            text="{file_size}" />
+                                        <Button icon="sap-icon://process" press="processUploadedFile" />
+                                    </cells>
+
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </form:content>
+                </form:SimpleForm>
+			    <HBox renderType="Bare">
+                    <!-- Available Fields: Taken from the list of headers from the handleUploadComplete -->
+                    <Table
+                        id="idAvailableFields"
+                        mode="SingleSelectMaster"
+                        growing="true"
+                        growingThreshold="10"
+                        beforeOpenContextMenu="onBeforeOpenContextMenu"
+                        items="{
+                            path: '/ProductCollection',
+                            filters: {path: 'Rank', operator: 'EQ', value1: '0'}
+                        }">
+                        <contextMenu>
+                            <Menu>
+                                <MenuItem text="Move to Selected Products" press="moveToSelectedProductsTable" />
+                            </Menu>
+                        </contextMenu>
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Available Fields from file" />
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column
+                                sortProperty="Name"
+                                filterProperty="Name">
+                                <Text text="Field Name" />
+                            </Column>
+                            <Column
+                                sortProperty="Category"
+                                filterProperty="Category">
+                                <Text text="Sample" />
+                            </Column>
+                        </columns>
+                        <dragDropConfig>
+                            <dnd:DragInfo
+                                groupName="available2selected"
+                                sourceAggregation="items" />
+                            <dnd:DropInfo
+                                groupName="selected2available"
+                                drop="onDropAvailableProductsTable" />
+                        </dragDropConfig>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{Name}" wrapping="false" />
+                                    <Text text="{Category}" wrapping="false" />
+                                    <Text text="{
+                                        path: 'Quantity',
+                                        type: 'sap.ui.model.type.Integer'
+                                    }" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <!-- Selector -->
+                    <VBox justifyContent="Center" class="sapUiTinyMarginBeginEnd">
+                        <Button
+                            class="sapUiTinyMarginBottom"
+                            icon="sap-icon://navigation-right-arrow"
+                            tooltip="Move to selected"
+                            press="moveToSelectedProductsTable"/>
+                        <Button
+                            icon="sap-icon://navigation-left-arrow"
+                            tooltip="Move to available"
+                            press="moveToAvailableProductsTable"/>
+                    </VBox>
+                    <!-- Target Fields -->
+                    <Table
+                        id="target_table"
+                        mode="SingleSelectMaster"
+                        growing="true"
+                        growingThreshold="10"
+                        beforeOpenContextMenu="onBeforeOpenContextMenu"
+                        items="{
+                            path: '/ProductCollection',
+                            filters: {path: 'Rank', operator: 'GT', value1: '0'},
+                            sorter: {path: 'Rank', descending: true}
+                        }"
+                        noData="Please drag-and-drop products here.">
+                        <contextMenu>
+                            <Menu>
+                                <MenuItem text="Move to Available Products" press="moveToAvailableProductsTable" />
+                                <MenuItem text="Move up" press="moveUp" />
+                                <MenuItem text="Move down" press="moveDown" />
+                            </Menu>
+                        </contextMenu>
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text="Mapped Fields" />
+                                <ToolbarSpacer/>
+                                <Button
+                                    icon="sap-icon://navigation-up-arrow"
+                                    tooltip="Move up"
+                                    press="moveUp"/>
+                                <Button
+                                    icon="sap-icon://navigation-down-arrow"
+                                    tooltip="Move down"
+                                    press="moveDown"/>
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text text="Field Name" />
+                            </Column>
+                            <Column>
+                                <Text text="Target Entity" />
+                            </Column>
+                            <Column>
+                                <Text text="Target Attribute" />
+                            </Column>
+                            <Column>
+                                <Text text="Rule" />
+                            </Column>
+
+                        </columns>
+                        <dragDropConfig>
+                            <dnd:DragInfo
+                                groupName="selected2available"
+                                sourceAggregation="items" />
+                            <dnd:DropInfo
+                                groupName="available2selected"
+                                targetAggregation="items"
+                                dropPosition="Between"
+                                drop="onDropSelectedProductsTable" />
+                            <dnd:DragDropInfo
+                                sourceAggregation="items"
+                                targetAggregation="items"
+                                dropPosition="Between"
+                                drop="onDropSelectedProductsTable"/>
+                        </dragDropConfig>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{Name}" wrapping="false" />
+                                    <Text text="{Category}" wrapping="false" />
+                                    <Text text="{
+                                        path: 'Quantity',
+                                        type: 'sap.ui.model.type.Integer'
+                                    }" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </HBox>
+</core:FragmentDefinition>

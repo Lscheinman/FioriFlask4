@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:layout="sap.ui.layout"
+        xmlns:form="sap.ui.layout.form">
+    <HBox alignItems="Start" justifyContent="SpaceBetween">
+    <!--<layout:HorizontalLayout allowWrapping="true" >-->
+        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+            <form:Form id="CRUD.update">
+                <form:title>
+                    <core:Title text="Update"/>
+                </form:title>
+                <form:layout>
+                    <form:ResponsiveGridLayout
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+                </form:layout>
+                <form:formContainers>
+				<form:FormContainer>
+					<form:formElements>
+						<form:FormElement label="Classes">
+							<form:fields>
+                                <Select id="CRUD.update.classes"
+                                    forceSelection="false"
+									class="sapUiResponsiveMargin"
+                                    change="onCRUDUpdateSelectChange"
+                                    items="{/}">
+                                    <core:Item key="{class}" text="{class}" />
+                                </Select>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+                <form:FormContainer title="Properties"
+                                    id="CRUD.update.classes.properties"
+                                    formElements="{/}">
+					<form:formElements>
+						<form:FormElement label="{name}" >
+							<form:fields>
+                                <Input/>
+							</form:fields>
+						</form:FormElement>
+					</form:formElements>
+				</form:FormContainer>
+			    </form:formContainers>
+            </form:Form>
+        </layout:VerticalLayout>
+    </HBox>
+</core:FragmentDefinition>

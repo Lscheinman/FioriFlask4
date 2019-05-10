@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core">
+        <HBox class="sapUiSmallMargin">
+			<VBox class="sapUiSmallMargin">
+				<Title text="Available databases"/>
+				<Select
+					id="dbList"
+					change="onListItemPress"
+					items="{
+						path: '/',
+						sorter: {
+							path: 'name'
+						}
+					}">
+					<core:Item
+							key="{name}"
+							text="{name}"
+					>
+					</core:Item>
+				</Select>
+			</VBox>
+			<VBox class="sapUiSmallMargin">
+				<Title text="Search selected DB"/>
+				<SearchField
+					id="dbSearch"
+					search="onSearch">
+				</SearchField>
+			</VBox>
+			<VBox class="sapUiSmallMargin">
+				<Title text="Clipboard"/>
+				<MultiComboBox
+					id="dbClipboard"
+					items="{
+						path: '/',
+						sorter: {
+							path: 'title'
+						}
+					}">
+					<core:Item
+							key="{key}"
+							text="{title}"
+							tooltip=""
+					>
+					</core:Item>
+				</MultiComboBox>
+			</VBox>
+			<VBox class="sapUiSmallMargin">
+				<Title text="View Clipboard"/>
+				<HBox>
+					<Button text="Add to Analysis" press="addClipboardToCanvas" type="Accept" />
+				</HBox>
+			</VBox>
+        </HBox>
+</core:FragmentDefinition>

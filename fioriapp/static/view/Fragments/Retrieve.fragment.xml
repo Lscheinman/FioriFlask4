@@ -1,0 +1,60 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core"
+        xmlns:layout="sap.ui.layout"
+        xmlns:form="sap.ui.layout.form">
+    <HBox alignItems="Start" justifyContent="SpaceBetween">
+    <!--<layout:HorizontalLayout allowWrapping="true" >-->
+        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+            <form:Form id="CRUD.retrieve">
+                <form:title>
+                    <core:Title text="Retrieve data"/>
+                </form:title>
+                <form:layout>
+                    <form:ResponsiveGridLayout
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+                </form:layout>
+                <form:formContainers>
+					<form:FormContainer>
+						<form:formElements>
+							<form:FormElement label="Search terms">
+								<form:fields>
+									<Input id="CRUD.retrieve.search_terms"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="Class filters">
+                                <form:fields>
+                                    <Select id="CRUD.retrieve.classes"
+                                            forceSelection="false"
+                                            class="sapUiResponsiveMargin"
+                                            items="{/}">
+                                        <core:Item key="{class}" text="{class}" />
+                                    </Select>
+                                </form:fields>
+                            </form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+                    <form:FormContainer>
+                        <form:formElements>
+                            <form:FormElement>
+                                <Button text="Search" press="onCRUDRetrievePress" type="Accept" />
+                            </form:FormElement>
+                        </form:formElements>
+					</form:FormContainer>
+			    </form:formContainers>
+            </form:Form>
+        </layout:VerticalLayout>
+    </HBox>
+</core:FragmentDefinition>

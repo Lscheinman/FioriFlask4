@@ -1,0 +1,1 @@
+from fioriapp.blueprints.orientdb.views import orientdb

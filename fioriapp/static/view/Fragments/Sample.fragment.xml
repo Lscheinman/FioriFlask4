@@ -1,0 +1,38 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:core="sap.ui.core">
+        <VBox class="sapUiSmallMargin">
+        <Table id="db_sample"
+        inset="false"
+        items="{
+            path: '/',
+            sorter: {
+                path: 'name'
+            }
+        }">
+        <headerToolbar>
+        </headerToolbar>
+        <columns>
+            <Column
+                id="sample_class_name"
+                width="8em">
+                <Text text="Class name" />
+            </Column>
+            <Column
+                id="sample_class_clusterids">
+                <Text text="Sample Detail" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text
+                        text="{class}" />
+                    <Text
+                        text="{detail}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+        </Table>
+    </VBox>
+</core:FragmentDefinition>

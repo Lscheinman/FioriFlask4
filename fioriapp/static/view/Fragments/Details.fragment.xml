@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:f="sap.f"
+        xmlns:core="sap.ui.core">
+	<f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" headerExpanded="true">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Data Lake Workbench"/>
+				</f:heading>
+				<f:expandedContent>
+					<HBox>
+					<VBox class="sapUiSmallMargin">
+						<Label text="Current DB" />
+						<Text id="dbSummary_name"/>
+					</VBox>
+					<VBox class="sapUiSmallMargin">
+						<Label text="Size" />
+						<Text id="dbSummary_size"/>
+					</VBox>
+					<VBox class="sapUiSmallMargin">
+						<Label text="Records" />
+						<Text id="dbSummary_records"/>
+					</VBox>
+					</HBox>
+				</f:expandedContent>
+				<f:actions>
+					<ToolbarSpacer/>
+					<Button
+							icon="sap-icon://sys-add"
+							type="Transparent"
+							press="onNewDBPress"/>
+					<Button
+							icon="sap-icon://delete"
+							type="Transparent"
+							press="onDeleteDBPress"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<f:content>
+					<core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.DBSummary" type="XML" />
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<VBox>
+				<core:Fragment fragmentName="sap.ui.demo.basicTemplate.view.Fragments.DetailTabs" type="XML" />
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</core:FragmentDefinition>

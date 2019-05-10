@@ -1,0 +1,94 @@
+<core:FragmentDefinition
+		xmlns="sap.suite.ui.commons.networkgraph"
+		xmlns:l="sap.ui.layout"
+		xmlns:core="sap.ui.core"
+		xmlns:layout="sap.suite.ui.commons.networkgraph.layout"
+		xmlns:m="sap.m">
+	<l:FixFlex>
+		<l:fixContent>
+			<m:FlexBox fitContainer="true" renderType="Bare" wrap="Wrap" id="graphWrapper2">
+				<m:items>
+					<Graph
+							nodes="{/nodes}"
+							lines="{/lines}"
+							groups="{/groups}"
+							id="graph">
+						<layoutData>
+							<m:FlexItemData/>
+						</layoutData>
+						<layoutAlgorithm>
+							<layout:LayeredLayout
+								mergeEdges="true"
+								nodePlacement="Simple"
+								nodeSpacing="40"/>
+							<!--
+							<layout:ForceBasedLayout/>
+							-->
+						</layoutAlgorithm>
+						<statuses>
+							<Status key="CustomChildStatus" title="Standard" backgroundColor="yellow"
+								borderColor="sapUiContentShadowColor" hoverBorderColor="sapUiContentShadowColor"
+								legendColor="sapUiContentShadowColor"/>
+							<Status key="CustomTeenStatus" title="Standard" backgroundColor="orange"
+								borderColor="sapUiContentShadowColor" hoverBorderColor="sapUiContentShadowColor"
+								legendColor="sapUiContentShadowColor"/>
+							<Status key="CustomNotBornStatus" title="Standard" backgroundColor="blue"
+								borderColor="sapUiContentShadowColor" hoverBorderColor="sapUiContentShadowColor"
+								legendColor="sapUiContentShadowColor"/>
+						</statuses>
+						<nodes>
+							<Node
+									height="{settings>/height}"
+									key="{key}"
+									title="{title}"
+									icon="{icon}"
+									group="{group}"
+									attributes="{path:'attributes', templateShareable:true}"
+									shape="{shape}"
+									status="{status}"
+									x="{x}"
+									y="{y}">
+								<attributes>
+									<ElementAttribute
+											label="{label}"
+											value="{value}"/>
+								</attributes>
+								<actionButtons>
+								<ActionButton
+									icon="sap-icon://broken-link"
+									title="Add link"
+									press="addLineFromNode"
+									position="Left"/>
+								<ActionButton
+									icon="sap-icon://edit"
+									title="Edit node"
+									press="editNode"
+									position="Left"/>
+								<ActionButton
+									icon="sap-icon://overview-chart"
+									title="Traverse"
+									press="getTraversalFromNode"
+									position="Left"/>
+								</actionButtons>
+							</Node>
+						</nodes>
+						<lines>
+							<Line
+									from="{from}"
+									to="{to}"
+									status="{status}"
+							>
+							</Line>
+						</lines>
+						<groups>
+							<Group
+									key="{key}"
+									title="{title}">
+							</Group>
+						</groups>
+					</Graph>
+				</m:items>
+			</m:FlexBox>
+		</l:fixContent>
+	</l:FixFlex>
+</core:FragmentDefinition>
